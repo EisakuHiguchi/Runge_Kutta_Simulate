@@ -1,0 +1,12 @@
+package ex02;
+
+public class f4 extends f{
+
+	@Override
+	public double f(double Vm, double m, double h, double n) {
+		
+		
+		return An * (1.0 - n) - Bn*n;
+	}
+	
+}

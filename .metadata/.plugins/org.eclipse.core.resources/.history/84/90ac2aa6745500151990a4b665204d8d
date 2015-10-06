@@ -1,0 +1,12 @@
+package ex01;
+
+public class f4 extends f{
+
+	@Override
+	public double f(double t, double x, double y, double z) {
+		
+		double a = 0.6; // ‚±‚Ì”’l‚ğ•Ï‚¦‚é‚±‚Æ‚É‚æ‚Á‚Ä‘½—p‚È‰ğ‚ª“¾‚ç‚ê‚é
+		return a + z - (z*z*z / 3.0) - (x*x + y*y) * (1.0 + 0.25 * z);
+	}
+	
+}

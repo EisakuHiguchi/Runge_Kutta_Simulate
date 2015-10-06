@@ -1,0 +1,15 @@
+package ex02;
+
+public class f2 extends f{
+
+	@Override
+	public double f(double Vm, double m, double h, double n) {
+		double Ah;
+		double Bh;
+		
+		Ah = 0.07*Math.exp(-1*Vm/20.0);
+		
+		return Ah * (1.0 - h) - Bh*h;
+	}
+	
+}

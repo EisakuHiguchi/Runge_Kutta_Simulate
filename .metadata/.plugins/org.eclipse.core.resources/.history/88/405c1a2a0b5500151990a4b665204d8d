@@ -1,0 +1,22 @@
+package ex02;
+
+public class f1 extends f{
+
+	@Override
+	public double f(double Vm, double x, double y, double z) {
+		double Am;
+		double Bm;
+		
+		Am = -0.1 * (Vm + 50);
+		Am = Am / (Math.exp(-1.0 * (Vm + 50) / 10) - 1);
+		
+		
+		
+//		Am = 0.1*(25.0-Vm)/(Math.exp((25.0-Vm)/10.0)-1.0);
+//		Bm = 4.0*Math.exp(-1*Vm/18.0);
+		
+		
+		
+		return Am * (1.0 - x) - Bm * x;
+	}
+}

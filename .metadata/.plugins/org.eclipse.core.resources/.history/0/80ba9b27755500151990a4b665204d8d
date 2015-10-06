@@ -1,0 +1,35 @@
+package ex02;
+
+public class f4 extends f{
+
+	@Override
+	public double f(double Vm, double m, double h, double n) {
+
+		double En, Ek, El;
+		double Gn, Gk;
+		double gn, gk, gl;
+		double Cm;
+		double Vrest = -65.0;
+//		En = 40.0;
+//		Ek = 87.0;
+//		El = -64.387;
+		
+		En = 50.0;
+		Ek = -77.0;
+		El = -54.387;
+
+		
+		Gn = 120.0;
+		Gk = 36.0;
+		gl = 0.3;
+		Cm = 1.0;
+		
+		gn = m*m*m*h*Gn;
+		gk = n*n*n*n*Gk;
+		
+		
+		
+		return An * (1.0 - n) - Bn*n;
+	}
+	
+}

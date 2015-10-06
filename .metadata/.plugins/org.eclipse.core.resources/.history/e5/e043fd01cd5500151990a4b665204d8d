@@ -1,0 +1,83 @@
+package ex02;
+
+public class f4 extends f{
+	
+	double dt;
+	
+	public f4(int length, double dt) {
+		super(length);
+		this.dt = dt;
+	}
+
+	@Override
+	public double f(double Vm, double m, double h, double n, double t) {
+
+		double En, Ek, El;
+		double Gn, Gk;
+		double gn, gk, gl;
+		double Cm;
+		double Vrest = -65.0;
+		
+		
+		En = 40.0;
+		Ek = 87.0;
+		El = -64.387;
+		
+//		En = 50.0;
+//		Ek = -77.0;
+//		El = -54.387;
+
+		
+		Gn = 120.0;
+		Gk = 36.0;
+		gl = 0.3;
+		Cm = 1.0;
+		
+		gn = m*m*m*h*Gn;
+		gk = n*n*n*n*Gk;
+		
+//		double Ik;
+//		double Ina;
+//		double Il;
+//		
+//		Ik = gk * (Vm + Vrest - Ek);
+//		Ina = gn * (Vm + Vrest - En);
+//		Il = gl * (Vm + Vrest - El);
+		
+//		Ik = gk * (Vm - Vrest - Ek);
+//		Ina = gn * (Vm - Vrest - En);
+//		Il = gl * (Vm - Vrest - El);
+		
+		
+//		double Ichannel = Ik + Ina + Il;
+//		
+//		double Im = I(t) - Ichannel;
+//		Vm = Vm + (Im / Cm) * dt;
+		
+//		Vm = Im / Cm;
+		
+//		double I = (Cm * Vm) + gl * (Vm - El) + gn * (Vm - En) + gk * (Vm - Ek);
+		
+//		double Vmt = gl * (Vm - El) + gn * (Vm - En) + gk * (Vm - Ek);
+//		Vmt = I(t) - Vmt;
+//		Vm = Vmt / Cm;
+		
+		
+		return Vm;
+	}
+	
+	private double I(double t) {
+//		if(t > 0 && t < 60) {
+//			return 20.0;
+//		}
+//		
+		if(t > 80) {
+			return 0;
+		}
+		else if(t < 20) {
+			return 0;
+		}
+//		
+		return 10;
+	}
+}

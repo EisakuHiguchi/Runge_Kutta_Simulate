@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="154" key="DIALOG_X_ORIGIN"/>
+		<item value="499" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="protected double" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="double"/>
+			<item value="public"/>
+			<item value="ex."/>
+			<item value="double[] "/>
+			<item value=" = new double[length]"/>
+			<item value="k0[2]"/>
+			<item value="k0[1]"/>
+			<item value="k0[0]"/>
+		</list>
+		<list key="replacehistory">
+			<item value="protected double"/>
+			<item value="protected"/>
+			<item value=""/>
+			<item value="k1[2]"/>
+			<item value="k1[1]"/>
+			<item value="k1[0]"/>
+			<item value="i"/>
+			<item value="Math.exp"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="353" key="DIALOG_WIDTH"/>
+		<item value="1|Yu Gothic UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Yu Gothic UI" key="DIALOG_FONT_NAME"/>
+		<item value="531" key="DIALOG_HEIGHT"/>
+		<item value="400" key="DIALOG_X_ORIGIN"/>
+		<item value="353" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

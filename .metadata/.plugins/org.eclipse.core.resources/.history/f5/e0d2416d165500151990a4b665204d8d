@@ -1,0 +1,153 @@
+package ex02;
+
+import java.io.FileWriter;
+
+public class ex02 {
+
+	/*
+	 * ホジキンハクスレー
+	 * dm/dt = Am (1 - m) - Bm*m
+	 * Am = -0.1(Vm + 50) / (exp(- (Vm + 50) / 10 ) -1)
+	 * Bm = 4exp(- (Vm + 75) / 18)
+	 * 
+	 * dh/dt = Ah (1 - h) - Bm*h
+	 * Ah = 0.07 exp(-(Vm + 75) / 20)
+	 * Bh = 1 / (exp(-(Vm + 45) / 10) + 1)
+	 * 
+	 * dn/dt = An(1 - n) - Bn*n
+	 * An = -0.01(Vm + 65) / (exp(-(Vm + 65) / 10) - 1)
+	 * Bn = 0.125exp(-(Vm + 75) / 80)
+	 * 
+	 * I(t) = Cm * (dVm/dt) + gl(Vm - El)
+	 * + gn(Vm - En) + gk(Vm - Ek)
+	 * 
+	 * gn = m*m*m*h*Gn
+	 * gk = n*n*n*n*Gk
+	 * 
+	 */
+	
+	
+	public static void main(String[] args) {
+		double n,m,h,Gn,Gk,gl,Cm;
+		double Vm,El,En,Ek;
+		double gn, gk;
+//		double I;
+		double dt, tmax, t;
+		
+		double k0[] = new double[3];
+		
+		f[] k = new f[3];
+		k[0] = new f1();
+		k[1] = new f2();
+		k[2] = new f3();
+		
+		dt = 0.025;
+		tmax = 1000.0;
+		
+		double Vrest = -65.0;
+		En = 40.0;
+		Ek = 87.0;
+		El = -64.387;
+		
+		Gn = 120.0;
+		Gk = 36.0;
+		gl = 0.3;
+		Cm = 1.0;
+		
+		
+		m = 0.0;
+		h = 0.0;
+		n = 0.0;
+		
+		Vm = 0.0;
+		
+		
+		try {
+			FileWriter fw = new FileWriter("output.data");
+			FileWriter fw1 = new FileWriter("output1.data");
+			
+			for(t = 0; t < tmax; t += dt) {
+				for(int i = 0; i < 3; i++) {
+					k0[i] = dt * k[i].f(t, m, h, n);
+				}
+				
+				for(int i = 0; i < 3; i++) {
+					k[0].k[i] = dt * k[i].f(Vm
+							, m + k0[0] / 2.0
+							, h + k0[1] / 2.0
+							, n + k0[2] / 2.0);
+				}
+				
+				for(int i = 0; i < 3; i++) {
+					k[1].k[i] = dt * k[i].f(Vm
+							, m + k[0].k[0] / 2.0
+							, h + k[0].k[1] / 2.0
+							, n + k[0].k[2] / 2.0);
+				}
+				
+				for(int i = 0; i < 3; i++) {
+					k[2].k[i] = dt * k[i].f(Vm
+							, m + k[1].k[0]
+							, h + k[1].k[1]
+							, n + k[1].k[2]);
+				}
+				
+				m = m + (k0[0] + 2.0 * k[0].k[0] + 2.0 * k[1].k[0] + k[2].k[0]) / 6.0; 
+				h = h + (k0[1] + 2.0 * k[0].k[1] + 2.0 * k[1].k[1] + k[2].k[1]) / 6.0;
+				n = n + (k0[2] + 2.0 * k[0].k[2] + 2.0 * k[1].k[2] + k[2].k[2]) / 6.0;
+				
+				gn = m*m*m*h*Gn;
+				gk = n*n*n*n*Gk;
+				
+				double Ik;
+				double Ina;
+				double Il;
+				
+//				Ik = gk * (Vm + Vrest - Ek);
+//				Ina = gn * (Vm + Vrest - En);
+//				Il = gl * (Vm + Vrest - El);
+				
+				Ik = gk * (Vm - Vrest - Ek);
+				Ina = gn * (Vm - Vrest - En);
+				Il = gl * (Vm - Vrest - El);
+				
+				
+				double Ichannel = Ik + Ina + Il;
+				
+				double Im = I(t) - Ichannel;
+				Vm = Vm + (Im / Cm) * dt;
+				
+//				double I = (Cm * Vm) + gl * (Vm - El) + gn * (Vm - En) + gk * (Vm - Ek);
+				
+//				double Vmt = (gl * (Vm - El) + gn * (Vm - En) + gk * (Vm - Ek));
+//				Vmt = I(t) - Vmt;
+//				Vm = Vmt / Cm;
+				
+				fw.write(m + " " + h + " " + n + "\n");
+				fw1.write(t + " " + Vm + "\n");
+			}
+			fw.close();
+			fw1.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		System.out.println("finish");
+		
+		
+	}
+	
+	private static double I(double t) {
+//		if(t > 0 && t < 60) {
+//			return 20.0;
+//		}
+		
+		if(t > 60) {
+			
+		}
+		
+		return 10;
+	}
+	
+}
